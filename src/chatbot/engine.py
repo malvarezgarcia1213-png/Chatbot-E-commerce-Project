@@ -8,6 +8,10 @@ import json
 from typing import Dict, List, Tuple, Any
 import random
 
+# Confidence score constants
+CONFIDENCE_HIGH = 0.85  # High confidence for multi-word queries
+CONFIDENCE_MEDIUM = 0.7  # Medium confidence for simple queries
+
 
 class ChatbotEngine:
     """
@@ -195,8 +199,8 @@ class ChatbotEngine:
                 
             for pattern in intent_data["patterns"]:
                 if re.search(pattern, message, re.IGNORECASE):
-                    # Simple confidence based on pattern match
-                    confidence = 0.85 if len(message.split()) > 2 else 0.7
+                    # Confidence based on query complexity
+                    confidence = CONFIDENCE_HIGH if len(message.split()) > 2 else CONFIDENCE_MEDIUM
                     if confidence > best_confidence:
                         best_intent = intent_name
                         best_confidence = confidence

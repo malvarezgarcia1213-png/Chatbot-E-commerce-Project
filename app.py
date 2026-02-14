@@ -17,7 +17,8 @@ from models.product_catalog import ProductCatalog
 
 # Initialize Flask app
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'your-secret-key-here-change-in-production'
+# Load secret key from environment or use a secure default for development
+app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'dev-secret-key-change-in-production')
 CORS(app)
 socketio = SocketIO(app, cors_allowed_origins="*")
 
@@ -154,5 +155,12 @@ if __name__ == '__main__':
     print("  - GET  /api/products - Get products")
     print("  - GET  /api/categories - Get categories")
     print("=" * 60)
+    print("WARNING: Running in development mode. Do not use in production!")
+    print("=" * 60)
     
-    socketio.run(app, debug=True, host='0.0.0.0', port=5000, allow_unsafe_werkzeug=True)
+    # Get configuration from environment
+    debug_mode = os.environ.get('FLASK_DEBUG', 'True').lower() == 'true'
+    host = os.environ.get('FLASK_HOST', '127.0.0.1')  # Default to localhost for security
+    port = int(os.environ.get('FLASK_PORT', '5000'))
+    
+    socketio.run(app, debug=debug_mode, host=host, port=port, allow_unsafe_werkzeug=True)

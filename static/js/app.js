@@ -8,8 +8,13 @@ class ChatbotApp {
     }
 
     generateUserId() {
-        // Generate a random user ID for session tracking
-        return 'user_' + Math.random().toString(36).substr(2, 9);
+        // Generate a user ID for session tracking
+        // Try to use crypto.randomUUID() if available, otherwise fallback
+        if (typeof crypto !== 'undefined' && crypto.randomUUID) {
+            return 'user_' + crypto.randomUUID();
+        }
+        // Fallback: timestamp + random string for better uniqueness
+        return 'user_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
     }
 
     init() {
