@@ -34,8 +34,9 @@ class ChatbotEngine:
             },
             "product_search": {
                 "patterns": [
-                    r"\b(looking for|search|find|show me|want to buy|need|interested in)\b.*\b(product|item|shirt|shoe|dress|pants|jacket|electronics|phone|laptop)\b",
+                    r"\b(looking for|search|find|show me|want to buy|need|interested in)\b",
                     r"\b(do you have|sell|offer|available)\b",
+                    r"\b(product|item|shirt|shoe|shoes|dress|pants|jacket|electronics|phone|laptop|laptops)\b",
                 ],
                 "responses": [
                     "I'd be happy to help you find products! What specific item are you looking for?",
