@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-commerce Chatbot - Your Shopping Assistant</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1>🛍️ E-commerce Shop</h1>
+                <p class="tagline">Your AI Shopping Assistant</p>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Products Section -->
+            <aside class="products-sidebar">
+                <h2>Featured Products</h2>
+                <div id="product-list" class="product-list">
+                    <div class="loading">Loading products...</div>
+                </div>
+            </aside>
+
+            <!-- Chat Section -->
+            <main class="chat-section">
+                <div class="chat-container">
+                    <div class="chat-header">
+                        <div class="bot-avatar">🤖</div>
+                        <div class="bot-info">
+                            <h3>Shopping Assistant</h3>
+                            <span class="status">● Online</span>
+                        </div>
+                    </div>
+
+                    <div id="chat-messages" class="chat-messages">
+                        <div class="message bot-message">
+                            <div class="message-avatar">🤖</div>
+                            <div class="message-content">
+                                <p>Hello! Welcome to our E-commerce store! 👋</p>
+                                <p>I'm your AI shopping assistant. I can help you with:</p>
+                                <ul>
+                                    <li>🔍 Finding products</li>
+                                    <li>💰 Price information</li>
+                                    <li>📦 Order tracking</li>
+                                    <li>🔄 Returns & exchanges</li>
+                                    <li>💳 Payment methods</li>
+                                    <li>🚚 Shipping information</li>
+                                </ul>
+                                <p>How can I help you today?</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="chat-input-container">
+                        <form id="chat-form" class="chat-form">
+                            <input 
+                                type="text" 
+                                id="user-input" 
+                                placeholder="Type your message here..." 
+                                autocomplete="off"
+                                required
+                            />
+                            <button type="submit" id="send-button">
+                                <span>Send</span>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </button>
+                        </form>
+                        <div class="quick-actions">
+                            <button class="quick-action" data-message="Show me electronics">Electronics</button>
+                            <button class="quick-action" data-message="I'm looking for shoes">Footwear</button>
+                            <button class="quick-action" data-message="Track my order">Track Order</button>
+                            <button class="quick-action" data-message="What's your return policy?">Returns</button>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
