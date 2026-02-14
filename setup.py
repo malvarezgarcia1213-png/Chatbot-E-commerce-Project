@@ -12,7 +12,7 @@ setup(
         "flask-cors>=4.0.0",
         "flask-socketio>=5.3.5",
         "python-socketio>=5.10.0",
-        "nltk>=3.8.1",
+        "nltk>=3.9",
         "scikit-learn>=1.3.2",
         "numpy>=1.26.2",
         "pandas>=2.1.4",
